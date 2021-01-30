@@ -55,24 +55,24 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <h5 id="ticket-total" class="inp-style value-inp-width" type="number" name="" value="0"></h5>
+                    <h5 id="firstClass-total" class="inp-style value-inp-width" type="number" name="" value="0"></h5>
                 </div>
                 <div class="plus-minus-btn">
-                    <p><span><i id="ticket-decrease" class="far fa-minus-square"></i></span> 
-                    <div class="inputCount"><input id="ticket-count" class="from-control" type="number" value="0"></div>
-                    <span><i id="ticket-increase" class="far fa-plus-square"></i></span></p>
+                    <p><span><i onclick="handleTicketChange('firstClass', false)" class="far fa-minus-square"></i></span> 
+                    <div class="inputCount"><input id="firstClass-count" class="from-control" type="number" value="0"></div>
+                    <span><i onclick="handleTicketChange('firstClass', true)" class="far fa-plus-square"></i></span></p>
                 </div>
             </div>
             
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <h5 id="ticket-total" class="inp-style value-inp-width" type="number" name="" value="0"></h5>
+                    <h5 id="economy-total" class="inp-style value-inp-width" type="number" name="" value="0"></h5>
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span><i id="ticket-decrease" class="far fa-minus-square"></i></span> 
-                    <div class="inputCount"><input id="ticket-count1" class="from-control" type="number"></div>
-                    <span><i id="ticket-increase1" class="far fa-plus-square"></i></span> </p>
+                    <p> <span><i onclick="handleTicketChange('economy', false)" class="far fa-minus-square"></i></span> 
+                    <div class="inputCount"><input id="economy-count" class="from-control" type="number" value="0"></div>
+                    <span><i onclick="handleTicketChange('economy', true)" class="far fa-plus-square"></i></span> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -115,22 +115,28 @@
     <!--Thank You-->
     <!-- <script src="script.js"></script> -->
     <script>
-        document.getElementById("ticket-increase").addEventListener("click", function(){
-        const ticketInput = document.getElementById("ticket-count");
-        const ticketCount = parseInt(ticketInput.value);
-        const ticketNewCount = ticketCount + 1;
-        ticketInput.value = ticketNewCount;
-        const ticketTotal = ticketNewCount * 150;
-        document.getElementById("ticket-total").innerText = "$" + ticketTotal;
-        })
-        document.getElementById("ticket-decrease").addEventListener("click", function(){
-        const ticketInput = document.getElementById("ticket-count");
-        const ticketCount = parseInt(ticketInput.value);
-        const ticketNewCount = ticketCount - 1;
-        ticketInput.value = ticketNewCount;
-        const ticketTotal = ticketNewCount * 150;
-        document.getElementById("ticket-total").innerText = "$" + ticketTotal;
-        })
+        function handleTicketChange(ticket, isIncrease){
+            const ticketInput = document.getElementById(ticket + "-count");
+            const ticketCount = parseInt(ticketInput.value);
+            let ticketNewCount = ticketCount;
+            if (isIncrease == true) {
+                ticketNewCount = ticketCount + 1;
+            }
+            if (isIncrease == false && ticketCount > 0) {
+                ticketNewCount = ticketCount - 1;
+            }
+            ticketInput.value = ticketNewCount;
+
+            let ticketTotal = 0;
+            if (ticket == "firstClass") {
+                ticketTotal = ticketNewCount * 150;
+            }
+            if (ticket == "economy") {
+                ticketTotal = ticketNewCount * 100;
+            }
+            // const ticketTotal = ticketNewCount * 150;
+            document.getElementById(ticket + "-total").innerText = "$" + ticketTotal;
+        }
     </script>
 </body>
 
