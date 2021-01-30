@@ -69,9 +69,10 @@ nav ul li a:hover, a.active{
 .value-inp-width{
     min-width: 220px;
     height: 35px;
-    padding: 4px 10px;
+    padding: 10px;
     text-align: center;
-    justify-content: center
+    justify-content: center;
+    background-color: #F3F5FF;
 }
 .inputCount{
     width: 70px;

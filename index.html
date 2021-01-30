@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Booking</title>
+    <!-- Bootstarp -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
@@ -53,10 +55,11 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input id="ticket-total" class="inp-style value-inp-width" type="number" name="" value="0">
+                    <h5 id="ticket-total" class="inp-style value-inp-width" type="number" name="" value="0"></h5>
                 </div>
                 <div class="plus-minus-btn">
                     <p><span><i id="ticket-decrease" class="far fa-minus-square"></i></span> 
+                    <div class="inputCount"><input id="ticket-count" class="from-control" type="number" value="0"></div>
                     <span><i id="ticket-increase" class="far fa-plus-square"></i></span></p>
                 </div>
             </div>
@@ -64,11 +67,12 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input class="inp-style value-inp-width" type="number" name="">
+                    <h5 id="ticket-total" class="inp-style value-inp-width" type="number" name="" value="0"></h5>
                 </div>
                 <div class="plus-minus-btn">
                     <p> <span><i id="ticket-decrease" class="far fa-minus-square"></i></span> 
-                    <span><i id="ticket-increase" class="far fa-plus-square"></i></span> </p>
+                    <div class="inputCount"><input id="ticket-count1" class="from-control" type="number"></div>
+                    <span><i id="ticket-increase1" class="far fa-plus-square"></i></span> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -109,18 +113,23 @@
     </section>
 
     <!--Thank You-->
+    <!-- <script src="script.js"></script> -->
     <script>
         document.getElementById("ticket-increase").addEventListener("click", function(){
-        const ticketInput = document.getElementById("ticket-total");
+        const ticketInput = document.getElementById("ticket-count");
         const ticketCount = parseInt(ticketInput.value);
         const ticketNewCount = ticketCount + 1;
         ticketInput.value = ticketNewCount;
+        const ticketTotal = ticketNewCount * 150;
+        document.getElementById("ticket-total").innerText = "$" + ticketTotal;
         })
         document.getElementById("ticket-decrease").addEventListener("click", function(){
-        const ticketInput = document.getElementById("ticket-total");
+        const ticketInput = document.getElementById("ticket-count");
         const ticketCount = parseInt(ticketInput.value);
         const ticketNewCount = ticketCount - 1;
         ticketInput.value = ticketNewCount;
+        const ticketTotal = ticketNewCount * 150;
+        document.getElementById("ticket-total").innerText = "$" + ticketTotal;
         })
     </script>
 </body>
